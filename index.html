@@ -325,6 +325,151 @@
             margin-right: auto;
         }
 
+        /* About Section Styles */
+        .about-hero {
+            background: linear-gradient(135deg, var(--bg-card), var(--dark-green));
+            padding: 50px 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 30px var(--ps2-blue-glow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, var(--ps2-blue-glow) 0%, transparent 50%);
+            opacity: 0.1;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .creator-title {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .creator-intro {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .journey-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .timeline-item {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.2);
+        }
+
+        .timeline-year {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px var(--primary-color);
+        }
+
+        .timeline-content {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .skills-showcase {
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 2px solid var(--border-color);
+        }
+
+        .skills-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .skill-name {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .skill-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .fun-quote {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: var(--bg-primary);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            font-style: italic;
+            box-shadow: 0 0 25px var(--ps2-blue-glow);
+        }
+
         /* Cards */
         .cards-grid {
             display: grid;
@@ -606,6 +751,22 @@
                 padding: 12px 15px;
                 font-size: 0.9rem;
             }
+
+            .journey-timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .creator-title {
+                font-size: 2rem;
+            }
+
+            .creator-intro {
+                font-size: 1.1rem;
+            }
         }
 
         /* Hidden class for language switching */
@@ -687,6 +848,10 @@
         <button class="nav-tab" onclick="showTab('pc-rental')">
             <span class="ar-text">💻 تأجير PC</span>
             <span class="en-text hidden">💻 PC Rental</span>
+        </button>
+        <button class="nav-tab" onclick="showTab('about')">
+            <span class="ar-text">🌟 حول Green Core</span>
+            <span class="en-text hidden">🌟 About Green Core</span>
         </button>
     </nav>
 
@@ -833,7 +998,7 @@
                             <span class="en-text hidden">Custom Development</span>
                         </h3>
                         <p class="card-description">
-                            <span class="ar-text">طلبات التطبيقات المخصصة مسموحة. نسخة تجريبية مجانية بعد التطوير دائماً. السعر قابل للتفاوض.</span>
+                            <span class="ar-text">طلبات التطبيقات المخصص مسموحة. نسخة تجريبية مجانية بعد التطوير دائماً. السعر قابل للتفاوض.</span>
                             <span class="en-text hidden">Custom app requests allowed. Free trial after development always. Price is negotiable.</span>
                         </p>
                     </div>
@@ -880,6 +1045,184 @@
                     <p>
                         <span class="ar-text">خدمة تأجير PC قادمة قريباً. ابقوا على اطلاع!</span>
                         <span class="en-text hidden">PC rental service coming soon. Stay tuned!</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Green Core Tab -->
+        <div id="about" class="tab-content">
+            <div class="container">
+                <div class="about-hero">
+                    <div class="about-content">
+                        <h1 class="creator-title">
+                            <span class="ar-text">👋 مرحباً، أنا صانع Green Core!</span>
+                            <span class="en-text hidden">👋 Hey, I'm the Creator of Green Core!</span>
+                        </h1>
+                        <p class="creator-intro">
+                            <span class="ar-text">
+                                مبرمج شغوف وعاشق للألعاب منذ عام 1996! 🎮<br>
+                                من أول يوم لمست فيه الكمبيوتر، عرفت أن هذا هو عالمي. بدأت رحلتي مع GameShark وأكواد الألعاب وأنا عمري 11 سنة فقط!
+                            </span>
+                            <span class="en-text hidden">
+                                Passionate programmer and gaming enthusiast since 1996! 🎮<br>
+                                From the first day I touched a computer, I knew this was my world. Started my journey with GameShark and game codes when I was just 11 years old!
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="journey-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">
+                            <span class="ar-text">1996 🖥️</span>
+                            <span class="en-text hidden">1996 🖥️</span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="ar-text">
+                                <strong>بداية الحب!</strong><br>
+                                أول لقاء مع عالم الكمبيوتر. من هنا بدأت القصة مع عشق التكنولوجيا والألعاب.
+                            </span>
+                            <span class="en-text hidden">
+                                <strong>Love at First Sight!</strong><br>
+                                First encounter with the computer world. This is where the story began with my passion for technology and gaming.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">
+                            <span class="ar-text">2007 🎯</span>
+                            <span class="en-text hidden">2007 🎯</span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="ar-text">
+                                <strong>ولادة الهاكر الصغير!</strong><br>
+                                عمر 11 سنة، بدأت إنشاء أكواد GameShark و CodeBreaker. كان شعوري وكأنني ساحر يتحكم في عوالم الألعاب! ✨
+                            </span>
+                            <span class="en-text hidden">
+                                <strong>Birth of the Little Hacker!</strong><br>
+                                Age 11, started creating GameShark & CodeBreaker codes. Felt like a wizard controlling game worlds! ✨
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">
+                            <span class="ar-text">2010s 🚀</span>
+                            <span class="en-text hidden">2010s 🚀</span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="ar-text">
+                                <strong>مطور Trainers محترف!</strong><br>
+                                انتقلت من أكواد الكونسول إلى عالم PC Trainers. كل لعبة كانت تحدي جديد لحل ألغازها!
+                            </span>
+                            <span class="en-text hidden">
+                                <strong>Professional Trainer Developer!</strong><br>
+                                Moved from console codes to PC Trainers world. Every game was a new challenge to solve its puzzles!
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">
+                            <span class="ar-text">2025 🌟</span>
+                            <span class="en-text hidden">2025 🌟</span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="ar-text">
+                                <strong>ولادة Green Core!</strong><br>
+                                تحويل شغفي إلى مشروع يخدم المجتمع. من ترجمة الأنمي إلى تطوير التطبيقات المخصصة!
+                            </span>
+                            <span class="en-text hidden">
+                                <strong>Green Core is Born!</strong><br>
+                                Turning my passion into a project that serves the community. From anime subtitling to custom app development!
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-showcase">
+                    <h2 class="skills-title">
+                        <span class="ar-text">🛠️ مهاراتي وخبراتي</span>
+                        <span class="en-text hidden">🛠️ My Skills & Expertise</span>
+                    </h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-icon">🎮</span>
+                            <div class="skill-name">
+                                <span class="ar-text">Game Hacking</span>
+                                <span class="en-text hidden">Game Hacking</span>
+                            </div>
+                            <div class="skill-desc">
+                                <span class="ar-text">خبرة +15 سنة في تطوير Trainers</span>
+                                <span class="en-text hidden">15+ years of Trainer development</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <span class="skill-icon">💻</span>
+                            <div class="skill-name">
+                                <span class="ar-text">Programming</span>
+                                <span class="en-text hidden">Programming</span>
+                            </div>
+                            <div class="skill-desc">
+                                <span class="ar-text">تطوير تطبيقات مخصصة متنوعة</span>
+                                <span class="en-text hidden">Custom application development</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <span class="skill-icon">🎬</span>
+                            <div class="skill-name">
+                                <span class="ar-text">AI Integration</span>
+                                <span class="en-text hidden">AI Integration</span>
+                            </div>
+                            <div class="skill-desc">
+                                <span class="ar-text">دمج Whisper و Claude للترجمة</span>
+                                <span class="en-text hidden">Whisper & Claude integration</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <span class="skill-icon">🔧</span>
+                            <div class="skill-name">
+                                <span class="ar-text">Reverse Engineering</span>
+                                <span class="en-text hidden">Reverse Engineering</span>
+                            </div>
+                            <div class="skill-desc">
+                                <span class="ar-text">فهم وتحليل البرمجيات المعقدة</span>
+                                <span class="en-text hidden">Understanding complex software</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fun-quote">
+                    <span class="ar-text">
+                        "من GameShark الصغير إلى Green Core الكبير... الرحلة مستمرة! 🚀"<br>
+                        <small>- كل خط كود كُتب بشغف، وكل trainer صُنع بحب ❤️</small>
+                    </span>
+                    <span class="en-text hidden">
+                        "From little GameShark to big Green Core... the journey continues! 🚀"<br>
+                        <small>- Every line of code written with passion, every trainer made with love ❤️</small>
+                    </span>
+                </div>
+
+                <div class="info-box">
+                    <h4>
+                        <span class="ar-text">🎯 رؤيتي لـ Green Core</span>
+                        <span class="en-text hidden">🎯 My Vision for Green Core</span>
+                    </h4>
+                    <p>
+                        <span class="ar-text">
+                            أردت إنشاء مكان واحد يجمع كل شغفي: الألعاب، البرمجة، والتكنولوجيا المتقدمة. Green Core ليس مجرد موقع، إنه حلم أصبح حقيقة! 
+                            هدفي هو مساعدة المجتمع العربي والعالمي في الحصول على أدوات تقنية متطورة ومفيدة. 🌱
+                        </span>
+                        <span class="en-text hidden">
+                            I wanted to create one place that combines all my passions: gaming, programming, and advanced technology. Green Core isn't just a website, it's a dream come true! 
+                            My goal is to help the Arabic and global community get advanced and useful technical tools. 🌱
+                        </span>
                     </p>
                 </div>
             </div>
@@ -1063,82 +1406,4 @@
                 button.addEventListener('mouseenter', function() {
                     playHoverSound();
                 });
-                button.addEventListener('click', function(e) {
-                    playCassetteClickSound();
-                    // Ensure the link works properly
-                    if (this.href) {
-                        // Let the default behavior happen
-                        return true;
-                    }
-                });
-            });
-
-            // Add nav tab hover effects
-            const navTabs = document.querySelectorAll('.nav-tab');
-            navTabs.forEach(tab => {
-                tab.addEventListener('mouseenter', function() {
-                    playHoverSound();
-                });
-            });
-
-            // Add glow effect to important elements
-            const importantElements = document.querySelectorAll('.main-download, .pricing-box, .coming-soon');
-            importantElements.forEach(element => {
-                element.classList.add('glow');
-            });
-        });
-
-        // Smooth scrolling for anchor links
-        document.addEventListener('DOMContentLoaded', function() {
-            const links = document.querySelectorAll('a[href^="#"]');
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-
-        // Add some extra visual effects
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add pulse effect to floating lights
-            const lights = document.querySelectorAll('.light');
-            lights.forEach((light, index) => {
-                setTimeout(() => {
-                    light.style.animation += `, pulse 3s infinite ${index * 0.5}s`;
-                }, index * 1000);
-            });
-        });
-
-        // Add pulse keyframe animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0%, 100% { opacity: 0.8; transform: scale(1); }
-                50% { opacity: 1; transform: scale(1.2); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
-
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/687bb7587f202b19181ef5a0/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
-</body>
-</html>
+                
