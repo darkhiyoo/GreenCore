@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Core - Advanced Software Solutions | Custom Development & AI Tools</title>
+    <meta name="description" content="Green Core provides professional software development services including custom applications, AI-powered tools, game trainers, and technical solutions for businesses and individuals.">
+    <meta name="keywords" content="software development, custom applications, AI tools, game trainers, PC solutions, Windows applications, technical solutions, Green Core">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🟢</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #00ff88;
+            --secondary-color: #00cc66;
+            --accent-color: #00ffcc;
+            --dark-green: #003322;
+            --light-green: #002211;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --border-color: #333333;
+            --success-color: #00ff44;
+            --warning-color: #ffaa00;
+            --ps2-blue: #0080ff;
+            --ps2-blue-glow: rgba(0, 128, 255, 0.6);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* PS2 Blue Lights Animation */
+        .floating-lights {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .light {
+            position: absolute;
+            background: var(--ps2-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--ps2-blue-glow), 0 0 40px var(--ps2-blue-glow);
+            opacity: 0.8;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .light:nth-child(1) {
+            width: 4px;
+            height: 4px;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 6s;
+        }
+
+        .light:nth-child(2) {
+            width: 6px;
+            height: 6px;
+            left: 20%;
+            animation-delay: 1s;
+            animation-duration: 8s;
+        }
+
+        .light:nth-child(3) {
+            width: 3px;
+            height: 3px;
+            left: 30%;
+            animation-delay: 2s;
+            animation-duration: 7s;
+        }
+
+        .light:nth-child(4) {
+            width: 5px;
+            height: 5px;
+            left: 40%;
+            animation-delay: 0.5s;
+            animation-duration: 9s;
+        }
+
+        .light:nth-child(5) {
+            width: 4px;
+            height: 4px;
+            left: 60%;
+            animation-delay: 3s;
+            animation-duration: 6.5s;
+        }
+
+        .light:nth-child(6) {
+            width: 7px;
+            height: 7px;
+            left: 70%;
+            animation-delay: 1.5s;
+            animation-duration: 8.5s;
+        }
+
+        .light:nth-child(7) {
+            width: 3px;
+            height: 3px;
+            left: 80%;
+            animation-delay: 2.5s;
+            animation-duration: 7.5s;
+        }
+
+        .light:nth-child(8) {
+            width: 5px;
+            height: 5px;
+            left: 90%;
+            animation-delay: 4s;
+            animation-duration: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-toggle {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-primary);
+            border: none;
+            padding: 12px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--ps2-blue-glow);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px var(--ps2-blue-glow);
+            border-color: var(--ps2-blue);
+        }
+
+        .lang-toggle:hover::before {
+            left: 100%;
+        }
+
+        .lang-toggle:active {
+            transform: scale(1.2);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--dark-green));
+            color: var(--text-primary);
+            text-align: center;
+            padding: 80px 20px 60px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, var(--ps2-blue-glow) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--border-color);
+            padding: 0 20px;
+            margin-bottom: 0;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            background: none;
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .nav-tab:hover {
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .nav-tab:active {
+            transform: scale(1.1);
+        }
+
+        .nav-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            background: rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 60px 0;
+            min-height: 70vh;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section Styles */
+        .about-hero {
+            background: linear-gradient(135deg, var(--bg-card), var(--dark-green));
+            padding: 50px 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 30px var(--ps2-blue-glow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, var(--ps2-blue-glow) 0%, transparent 50%);
+            opacity: 0.1;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .creator-title {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .creator-intro {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .journey-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .timeline-item {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.2);
+        }
+
+        .timeline-year {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px var(--primary-color);
+        }
+
+        .timeline-content {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .skills-showcase {
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 2px solid var(--border-color);
+        }
+
+        .skills-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .skill-name {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .skill-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .fun-quote {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: var(--bg-primary);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            font-style: italic;
+            box-shadow: 0 0 25px var(--ps2-blue-glow);
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, var(--ps2-blue-glow), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .card:hover::before {
+            opacity: 0.1;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 0 10px var(--primary-color));
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        /* Download Links */
+        .download-section {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px solid var(--border-color);
+        }
+
+        .download-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .download-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .download-link {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-primary);
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .download-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+            z-index: -1;
+        }
+
+        .download-link:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px var(--ps2-blue-glow);
+            border-color: var(--ps2-blue);
+        }
+
+        .download-link:hover::before {
+            left: 100%;
+        }
+
+        .download-link:active {
+            transform: translateY(-1px) scale(1.1);
+        }
+
+        .main-download {
+            background: linear-gradient(45deg, var(--success-color), var(--primary-color)) !important;
+            font-size: 1.1rem !important;
+            padding: 15px 30px !important;
+            margin: 20px auto !important;
+            display: block !important;
+            width: fit-content !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+
+        /* Pricing */
+        .pricing-box {
+            background: linear-gradient(135deg, var(--bg-card), var(--dark-green));
+            color: var(--text-primary);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 20px var(--ps2-blue-glow);
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        /* Coming Soon */
+        .coming-soon {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--bg-card), var(--dark-green));
+            color: var(--text-primary);
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 30px var(--ps2-blue-glow);
+        }
+
+        .coming-soon h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--accent-color);
+        }
+
+        /* Instructions */
+        .instructions {
+            background: var(--bg-card);
+            border: 2px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 15px var(--ps2-blue-glow);
+        }
+
+        .instructions h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .instructions p {
+            color: var(--text-secondary);
+        }
+
+        /* Trainer Info Box */
+        .info-box {
+            background: var(--bg-card);
+            border: 2px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 15px var(--ps2-blue-glow);
+        }
+
+        .info-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .legal-note {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
+        [dir="rtl"] .controls {
+            left: auto;
+            right: 20px;
+        }
+
+        [dir="rtl"] .section-title::after {
+            left: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 60px 20px 40px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .download-links {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-tabs {
+                justify-content: flex-start;
+            }
+
+            .nav-tab {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+
+            .journey-timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .creator-title {
+                font-size: 2rem;
+            }
+
+            .creator-intro {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Hidden class for language switching */
+        .hidden {
+            display: none;
+        }
+
+        /* Button hover and active effects */
+        button, .download-link, .main-download {
+            user-select: none;
+        }
+
+        button:hover, .download-link:hover, .main-download:hover {
+            cursor: pointer;
+        }
+
+        /* Glow effect for interactive elements */
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px var(--primary-color);
+            }
+            to {
+                box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating PS2 Lights -->
+    <div class="floating-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <div class="controls">
+        <button class="lang-toggle" onclick="toggleLanguage()">
+            <span class="ar-text">English</span>
+            <span class="en-text hidden">العربية</span>
+        </button>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">
+                <span class="ar-text">🟢 Green Core</span>
+                <span class="en-text hidden">🟢 Green Core</span>
+            </h1>
+            <p class="tagline">
+                <span class="ar-text">حلول برمجية احترافية | تطوير مخصص | أدوات ذكاء اصطناعي</span>
+                <span class="en-text hidden">Professional Software Solutions | Custom Development | AI Tools</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" onclick="showTab('services')">
+            <span class="ar-text">🚀 خدماتنا</span>
+            <span class="en-text hidden">🚀 Our Services</span>
+        </button>
+        <button class="nav-tab" onclick="showTab('apps')">
+            <span class="ar-text">📱 التطبيقات</span>
+            <span class="en-text hidden">📱 Applications</span>
+        </button>
+        <button class="nav-tab" onclick="showTab('trainers')">
+            <span class="ar-text">🎮 حلول الألعاب</span>
+            <span class="en-text hidden">🎮 Gaming Solutions</span>
+        </button>
+        <button class="nav-tab" onclick="showTab('pc-rental')">
+            <span class="ar-text">💻 خدمات PC</span>
+            <span class="en-text hidden">💻 PC Services</span>
+        </button>
+        <button class="nav-tab" onclick="showTab('about')">
+            <span class="ar-text">🌟 عن الشركة</span>
+            <span class="en-text hidden">🌟 About Us</span>
+        </button>
+    </nav>
+
+    <main>
+        <!-- Services Overview Tab -->
+        <div id="services" class="tab-content active">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="ar-text">🚀 خدماتنا الاحترافية</span>
+                    <span class="en-text hidden">🚀 Our Professional Services</span>
+                </h2>
+                <p class="section-description">
+                    <span class="ar-text">نقدم مجموعة شاملة من الحلول البرمجية المتطورة لتلبية احتياجاتك التقنية</span>
+                    <span class="en-text hidden">We offer a comprehensive range of advanced software solutions to meet your technical needs</span>
+                </p>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <span class="card-icon">💻</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">تطوير التطبيقات المخصصة</span>
+                            <span class="en-text hidden">Custom Application Development</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">نطور تطبيقات Windows مخصصة تماماً لاحتياجاتك. من أدوات الأعمال إلى البرامج المتخصصة، نحول أفكارك إلى واقع.</span>
+                            <span class="en-text hidden">We develop custom Windows applications tailored to your needs. From business tools to specialized software, we turn your ideas into reality.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🤖</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">حلول الذكاء الاصطناعي</span>
+                            <span class="en-text hidden">AI-Powered Solutions</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">دمج تقنيات الذكاء الاصطناعي المتقدمة في تطبيقاتك. نستخدم Whisper وClaude وتقنيات AI الحديثة لتعزيز قدرات برامجك.</span>
+                            <span class="en-text hidden">Integrate advanced AI technologies into your applications. We use Whisper, Claude, and modern AI technologies to enhance your software capabilities.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">�</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">Blue Moon Launcher</span>
+                            <span class="en-text hidden">Blue Moon Launcher</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">منصة إطلاق ألعاب سينمائية بتحكم كامل عبر الـController. تجربة Big Picture مثالية مع إدارة ذكية للحفظ وملفات متعددة.</span>
+                            <span class="en-text hidden">Cinematic game launcher with full controller support. Perfect Big Picture experience with intelligent save management and multiple profiles.</span>
+                        </p>
+                        <a href="#apps" onclick="showTab('apps'); return false;" style="display: inline-block; margin-top: 10px; color: var(--primary-color); text-decoration: underline;">
+                            <span class="ar-text">تحميل الآن →</span>
+                            <span class="en-text hidden">Download Now →</span>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">�🎬</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">Milo Studio - أداة الترجمة الذكية</span>
+                            <span class="en-text hidden">Milo Studio - Smart Subtitle Tool</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">أداة متقدمة لترجمة الفيديوهات وإضافة الترجمات تلقائياً باستخدام AI. مثالية للأنمي والمسلسلات والمحتوى المرئي.</span>
+                            <span class="en-text hidden">Advanced tool for automatic video translation and subtitling using AI. Perfect for anime, series, and visual content.</span>
+                        </p>
+                        <a href="#apps" onclick="showTab('apps'); return false;" style="display: inline-block; margin-top: 10px; color: var(--primary-color); text-decoration: underline;">
+                            <span class="ar-text">تحميل الآن →</span>
+                            <span class="en-text hidden">Download Now →</span>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🎮</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">Game Trainers & Modding</span>
+                            <span class="en-text hidden">Game Trainers & Modding</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">تطوير trainers مخصصة للألعاب مع خبرة +15 سنة. نوفر أدوات تعديل احترافية لتحسين تجربة اللعب.</span>
+                            <span class="en-text hidden">Custom game trainer development with 15+ years experience. We provide professional modding tools to enhance gaming experience.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🛠️</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">استشارات تقنية</span>
+                            <span class="en-text hidden">Technical Consulting</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">نساعدك في اختيار أفضل الحلول التقنية لمشروعك. استشارات متخصصة في البرمجة والتطوير والأنظمة.</span>
+                            <span class="en-text hidden">We help you choose the best technical solutions for your project. Specialized consulting in programming, development, and systems.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">⚡</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">خدمات قادمة</span>
+                            <span class="en-text hidden">Coming Soon</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">نعمل باستمرار على توسيع خدماتنا. قريباً: تأجير PC السحابي، خدمات DevOps، والمزيد من الحلول المبتكرة.</span>
+                            <span class="en-text hidden">We're constantly expanding our services. Soon: Cloud PC rental, DevOps services, and more innovative solutions.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 40px; text-align: center;">
+                    <h4>
+                        <span class="ar-text">🎯 لماذا تختار Green Core؟</span>
+                        <span class="en-text hidden">🎯 Why Choose Green Core?</span>
+                    </h4>
+                    <p>
+                        <span class="ar-text">
+                            ✅ خبرة +15 سنة في تطوير البرمجيات<br>
+                            ✅ نسخ تجريبية مجانية لجميع التطبيقات المخصصة<br>
+                            ✅ دعم فني احترافي<br>
+                            ✅ أسعار تنافسية وشفافية كاملة<br>
+                            ✅ جودة عالية وتسليم في الوقت المحدد
+                        </span>
+                        <span class="en-text hidden">
+                            ✅ 15+ years of software development experience<br>
+                            ✅ Free trials for all custom applications<br>
+                            ✅ Professional technical support<br>
+                            ✅ Competitive pricing and full transparency<br>
+                            ✅ High quality and on-time delivery
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trainers Tab -->
+        <div id="trainers" class="tab-content">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="ar-text">🎮 حلول الألعاب الاحترافية</span>
+                    <span class="en-text hidden">🎮 Professional Gaming Solutions</span>
+                </h2>
+
+                <div class="info-box">
+                    <h4>
+                        <span class="ar-text">ما هي Game Trainers؟</span>
+                        <span class="en-text hidden">What are Game Trainers?</span>
+                    </h4>
+                    <p>
+                        <span class="ar-text">Game Trainers هي أدوات احترافية تتيح لك تخصيص تجربة اللعب من خلال تعديل قيم اللعبة. مثالية للاختبار، التطوير، أو الاستمتاع بطرق لعب جديدة.</span>
+                        <span class="en-text hidden">Game Trainers are professional tools that allow you to customize your gaming experience by modifying game values. Perfect for testing, development, or enjoying new playstyles.</span>
+                    </p>
+                </div>
+
+                <p class="section-description">
+                    <span class="ar-text">دعم PC، PlayStation 2 Emulators، وألعاب أخرى (offline فقط)</span>
+                    <span class="en-text hidden">Support for PC, PlayStation 2 Emulators, and other games (offline only)</span>
+                </p>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <span class="card-icon">🎯</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">Trainers مخصصة</span>
+                            <span class="en-text hidden">Custom Trainers</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">نطور trainers مخصصة حسب احتياجاتك للألعاب. خبرة +15 سنة في تحليل البيانات وتطوير أدوات الألعاب.</span>
+                            <span class="en-text hidden">We develop custom trainers tailored to your needs. 15+ years experience in data analysis and game tool development.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🔧</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">تقنيات متقدمة</span>
+                            <span class="en-text hidden">Advanced Techniques</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">نستخدم تقنيات متقدمة في memory scanning وcode injection لضمان trainers مستقرة وفعالة.</span>
+                            <span class="en-text hidden">We use advanced memory scanning and code injection techniques to ensure stable and effective trainers.</span>
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <span class="card-icon">⚠️</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">تقييم الجدوى</span>
+                            <span class="en-text hidden">Feasibility Assessment</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">نقوم بتقييم فني لكل طلب. إذا كان تطوير trainer غير ممكن لأسباب تقنية، سنخبرك فوراً بدون أي رسوم.</span>
+                            <span class="en-text hidden">We perform technical assessment for each request. If trainer development isn't possible for technical reasons, we'll inform you immediately with no charges.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">💰</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">تسعير مرن</span>
+                            <span class="en-text hidden">Flexible Pricing</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">الأسعار تعتمد على تعقيد اللعبة والمميزات المطلوبة. نقدم عرض سعر مفصل بعد تحليل اللعبة.</span>
+                            <span class="en-text hidden">Pricing depends on game complexity and requested features. We provide detailed quotes after game analysis.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🎮</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">أنواع الدعم</span>
+                            <span class="en-text hidden">Support Types</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">• ألعاب PC (Windows)<br>• PlayStation 2 Emulators<br>• ألعاب المحاكيات الأخرى<br>• ألعاب offline فقط</span>
+                            <span class="en-text hidden">• PC Games (Windows)<br>• PlayStation 2 Emulators<br>• Other emulator games<br>• Offline games only</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🏆</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">الخبرة والتميز</span>
+                            <span class="en-text hidden">Expertise & Excellence</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">بدأت مع GameShark منذ 2007 وطورت مئات الأكواد والـtrainers. نضمن جودة واحترافية في كل مشروع.</span>
+                            <span class="en-text hidden">Started with GameShark since 2007 and developed hundreds of codes and trainers. We guarantee quality and professionalism in every project.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 40px;">
+                    <h4>
+                        <span class="ar-text">⚖️ ملاحظة قانونية هامة</span>
+                        <span class="en-text hidden">⚖️ Important Legal Note</span>
+                    </h4>
+                    <p>
+                        <span class="ar-text">Trainers مخصصة للاستخدام الشخصي مع الألعاب offline فقط. لا ندعم أو نشجع استخدامها في الألعاب الأونلاين أو أي نشاط يخالف شروط الخدمة.</span>
+                        <span class="en-text hidden">Trainers are for personal use with offline games only. We don't support or encourage their use in online games or any activity that violates terms of service.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apps Tab -->
+        <div id="apps" class="tab-content">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="ar-text">📱 تطبيقاتنا الجاهزة</span>
+                    <span class="en-text hidden">📱 Our Ready Apps</span>
+                </h2>
+                <p class="section-description">
+                    <span class="ar-text">تطبيقات قوية جاهزة للاستخدام الفوري - صممت بشغف واحترافية</span>
+                    <span class="en-text hidden">Powerful applications ready for immediate use - designed with passion and professionalism</span>
+                </p>
+
+                <!-- Featured Apps Section -->
+                <div style="margin: 40px 0;">
+                    <h3 style="text-align: center; color: var(--accent-color); font-size: 1.8rem; margin-bottom: 30px;">
+                        <span class="ar-text">⭐ التطبيقات المميزة</span>
+                        <span class="en-text hidden">⭐ Featured Applications</span>
+                    </h3>
+
+                    <!-- Blue Moon Launcher -->
+                    <div class="card" style="margin-bottom: 40px; background: linear-gradient(135deg, var(--bg-card), #001a33); border: 2px solid #0080ff;">
+                        <span class="card-icon">🌙</span>
+                        <h3 class="card-title" style="color: #00ccff;">
+                            <span class="ar-text">Blue Moon Launcher</span>
+                            <span class="en-text hidden">Blue Moon Launcher</span>
+                        </h3>
+                        
+                        <!-- Blue Moon Screenshot -->
+                        <div style="text-align: center; margin: 20px 0;">
+                            <img src="assist/bluemoon.png" alt="Blue Moon Launcher" style="max-width: 100%; border-radius: 10px; border: 2px solid #0080ff; box-shadow: 0 0 20px rgba(0, 128, 255, 0.5);">
+                        </div>
+
+                        <p class="card-description">
+                            <span class="ar-text">
+                                <strong>ألعابك. حفظك. طريقتك.</strong><br><br>
+                                منصة إطلاق ألعاب بتحكم كامل عبر الـController، مصممة لتجربة Big Picture مثالية. استمتع بواجهة سينمائية تشبه الكونسول وأنت على Windows!<br><br>
+                                ✨ <strong>التحكم بالـController:</strong> Xbox، PlayStation، أو أي يد تحكم متوافقة<br>
+                                💾 <strong>إدارة ذكية للحفظ:</strong> نسخ احتياطي تلقائي قبل وبعد كل جلسة لعب<br>
+                                🎨 <strong>غلاف فني ديناميكي:</strong> استخراج تلقائي من SteamGridDB<br>
+                                🌌 <strong>ملفات متعددة:</strong> كل ملف له سجل حفظ خاص<br>
+                                🚀 <strong>إطلاق سريع:</strong> اضغط X وابدأ اللعب فوراً<br><br>
+                                <em>للاعبين الحقيقيين. مصمم للراحة والقوة معاً.</em>
+                            </span>
+                            <span class="en-text hidden">
+                                <strong>Your games. Your saves. Your way.</strong><br><br>
+                                A controller-first game launcher designed for the big-picture experience. Enjoy a cinematic console-like interface on Windows!<br><br>
+                                ✨ <strong>Controller Native:</strong> Xbox, PlayStation, or any XInput-compatible gamepad<br>
+                                💾 <strong>Intelligent Save Management:</strong> Auto snapshots before & after every session<br>
+                                🎨 <strong>Dynamic Artwork:</strong> Auto-fetch from SteamGridDB<br>
+                                🌌 <strong>Multiple Profiles:</strong> Each profile has its own save history<br>
+                                🚀 <strong>Quick Launch:</strong> Press X and start playing instantly<br><br>
+                                <em>For real players. Built for comfort and power.</em>
+                            </span>
+                        </p>
+
+                        <div class="pricing-box" style="margin: 20px 0;">
+                            <div class="price">
+                                <span class="ar-text">💰 Blue Moon = 70 ريال سعودي</span>
+                                <span class="en-text hidden">💰 Blue Moon = 70 SAR</span>
+                            </div>
+                            <p>
+                                <span class="ar-text">
+                                    • رخصة مدى الحياة<br>
+                                    • تحديثات مجانية<br>
+                                    • دعم فني كامل<br>
+                                    • جميع الميزات مفتوحة
+                                </span>
+                                <span class="en-text hidden">
+                                    • Lifetime license<br>
+                                    • Free updates<br>
+                                    • Full technical support<br>
+                                    • All features unlocked
+                                </span>
+                            </p>
+                        </div>
+                        
+                        <a href="https://www.mediafire.com/file/99sqxggz47tiyx3/bluemoon.7z/file" class="main-download" style="background: linear-gradient(45deg, #0080ff, #00ccff) !important;" target="_blank">
+                            <span class="ar-text">🌙 تحميل Blue Moon</span>
+                            <span class="en-text hidden">🌙 Download Blue Moon</span>
+                        </a>
+                    </div>
+
+                    <!-- Milo Studio -->
+                    <div class="card" style="margin-bottom: 40px; background: linear-gradient(135deg, var(--bg-card), var(--dark-green)); border: 2px solid var(--primary-color);">
+                        <span class="card-icon">🎬</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">Milo Studio - أداة الترجمة الذكية</span>
+                            <span class="en-text hidden">Milo Studio - AI Subtitle Tool</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">
+                                <strong>ترجمة احترافية مدعومة بالذكاء الاصطناعي</strong><br><br>
+                                هل لديك أنمي أو مسلسلات بدون ترجمة؟ Milo Studio يترجمها ويضيف الترجمات تلقائياً باستخدام تقنيات Whisper و Claude المتقدمة.<br><br>
+                                🤖 <strong>تقنية Whisper:</strong> استخراج ترجمة دقيق للصوت<br>
+                                🧠 <strong>Claude AI:</strong> ترجمة ذكية وسياقية<br>
+                                🎯 <strong>دقة عالية:</strong> نتائج احترافية للأنمي والمسلسلات<br>
+                                ⚡ <strong>سريع وفعال:</strong> معالجة سريعة للفيديوهات<br><br>
+                                <strong>💰 السعر: 50 ريال سعودي</strong><br>
+                                • نماذج Whisper = مدى الحياة<br>
+                                • Claude = يتطلب مفتاح API من المستخدم (غير مشمول)<br>
+                                • نسخة تجريبية متاحة (تعمل بالكامل مع Whisper)
+                            </span>
+                            <span class="en-text hidden">
+                                <strong>Professional AI-Powered Subtitling</strong><br><br>
+                                Have anime or series without subtitles? Milo Studio translates and adds subtitles automatically using advanced Whisper & Claude technologies.<br><br>
+                                🤖 <strong>Whisper Tech:</strong> Accurate audio transcription<br>
+                                🧠 <strong>Claude AI:</strong> Smart contextual translation<br>
+                                🎯 <strong>High Accuracy:</strong> Professional results for anime & series<br>
+                                ⚡ <strong>Fast & Efficient:</strong> Quick video processing<br><br>
+                                <strong>💰 Price: 50 SAR</strong><br>
+                                • Whisper models = lifetime<br>
+                                • Claude = requires user API key (not included)<br>
+                                • Trial available (works fully with Whisper)
+                            </span>
+                        </p>
+                        
+                        <a href="https://www.mediafire.com/file/5s6l119y1bp3bsk/milo_studio_portable.7z/file" class="main-download" target="_blank">
+                            <span class="ar-text">🎬 تحميل Milo Studio</span>
+                            <span class="en-text hidden">🎬 Download Milo Studio</span>
+                        </a>
+
+                        <!-- Whisper Models Downloads -->
+                        <div class="download-section" style="margin-top: 30px;">
+                            <h3 class="download-title">
+                                <span class="ar-text">🤖 روابط نماذج Whisper المطلوبة</span>
+                                <span class="en-text hidden">🤖 Required Whisper Models</span>
+                            </h3>
+                            <div class="download-links">
+                                <a href="https://www.mediafire.com/file/j1hc7fn1wb89eyx/ggml-tiny.bin/file" class="download-link" target="_blank">Tiny Model</a>
+                                <a href="https://www.mediafire.com/file/w7k2fq4yfy9d0r2/ggml-base.bin/file" class="download-link" target="_blank">Base Model</a>
+                                <a href="https://www.mediafire.com/file/ykjc3q2w0y1jtdz/ggml-small.bin/file" class="download-link" target="_blank">Small Model</a>
+                                <a href="https://www.mediafire.com/file/ndq7z7qjlcseo80/ggml-medium.bin/file" class="download-link" target="_blank">Medium Model</a>
+                                <a href="https://www.mediafire.com/file/3ldiubijcghgeqd/ggml-Large.bin/file" class="download-link" target="_blank">Large Model</a>
+                            </div>
+                        </div>
+
+                        <div class="instructions" style="margin-top: 20px;">
+                            <h4>
+                                <span class="ar-text">📋 تعليمات التثبيت</span>
+                                <span class="en-text hidden">📋 Installation Instructions</span>
+                            </h4>
+                            <p>
+                                <span class="ar-text">بعد تحميل النماذج، انقلها إلى مجلد "models" داخل Milo Studio.</span>
+                                <span class="en-text hidden">After downloading models, move them to the "models" folder inside Milo Studio.</span>
+                            </p>
+                        </div>
+
+                        <div class="legal-note" style="margin-top: 20px;">
+                            <p>
+                                <span class="ar-text"><strong>ملاحظة مهمة:</strong> ميزات Claude تتطلب مفتاح المستخدم واتصال بالإنترنت. يجب على المستخدم توفير مفتاح Claude API الخاص به. نحن لا نبيع أو نتضمن المفاتيح.</span>
+                                <span class="en-text hidden"><strong>Important Note:</strong> Claude features require user's key and internet connection. You must provide your own Claude API key. We don't sell or include keys.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Development Section -->
+                <div style="margin-top: 60px; border-top: 2px solid var(--border-color); padding-top: 40px;">
+                    <h3 style="text-align: center; color: var(--primary-color); font-size: 1.8rem; margin-bottom: 30px;">
+                        <span class="ar-text">🛠️ تطوير تطبيقات مخصصة</span>
+                        <span class="en-text hidden">🛠️ Custom Application Development</span>
+                    </h3>
+                    <p class="section-description">
+                        <span class="ar-text">لديك فكرة تطبيق؟ نحولها إلى واقع احترافي</span>
+                        <span class="en-text hidden">Have an app idea? We turn it into professional reality</span>
+                    </p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <span class="card-icon">🎯</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">تطوير حسب الطلب</span>
+                            <span class="en-text hidden">Custom Development</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">نطور تطبيقات Windows مخصصة لجميع الأغراض: أدوات أعمال، برامج إدارة، تطبيقات تقنية، وأي فكرة تحتاج لتنفيذها.</span>
+                            <span class="en-text hidden">We develop custom Windows applications for all purposes: business tools, management software, technical apps, and any idea you need to implement.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🆓</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">نسخة تجريبية مجانية</span>
+                            <span class="en-text hidden">Free Trial Version</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">دائماً نوفر نسخة تجريبية كاملة الوظائف بعد التطوير. جرّب قبل أن تشتري!</span>
+                            <span class="en-text hidden">We always provide a fully functional trial version after development. Try before you buy!</span>
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <span class="card-icon">🛠️</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">عملية التطوير</span>
+                            <span class="en-text hidden">Development Process</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">1️⃣ شارك فكرتك معنا<br>2️⃣ نحدد المتطلبات والسعر<br>3️⃣ نطور التطبيق<br>4️⃣ تجربة مجانية<br>5️⃣ تسليم نهائي مع الدعم</span>
+                            <span class="en-text hidden">1️⃣ Share your idea with us<br>2️⃣ We define requirements & pricing<br>3️⃣ We develop the app<br>4️⃣ Free trial<br>5️⃣ Final delivery with support</span>
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <span class="card-icon">�</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">نهج واقعي</span>
+                            <span class="en-text hidden">Realistic Approach</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">نحن صادقون معك - إذا كان طلبك غير قابل للتنفيذ، سنخبرك فوراً. نركز على ما يمكن تحقيقه بجودة عالية.</span>
+                            <span class="en-text hidden">We're honest with you - if your request isn't feasible, we'll tell you immediately. We focus on what can be achieved with high quality.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">💰</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">أسعار مرنة</span>
+                            <span class="en-text hidden">Flexible Pricing</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">الأسعار قابلة للتفاوض حسب تعقيد المشروع. نقدم عروض أسعار شفافة ومفصلة.</span>
+                            <span class="en-text hidden">Pricing is negotiable based on project complexity. We provide transparent and detailed quotes.</span>
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🎓</span>
+                        <h3 class="card-title">
+                            <span class="ar-text">تخصصاتنا</span>
+                            <span class="en-text hidden">Our Specializations</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="ar-text">• أدوات الأعمال والإدارة<br>• تطبيقات معالجة البيانات<br>• برامج الأتمتة<br>• أدوات الوسائط<br>• تطبيقات مخصصة للشركات</span>
+                            <span class="en-text hidden">• Business & management tools<br>• Data processing applications<br>• Automation software<br>• Media tools<br>• Custom corporate applications</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 40px;">
+                    <h4>
+                        <span class="ar-text">📞 جاهز للبدء بمشروعك المخصص؟</span>
+                        <span class="en-text hidden">📞 Ready to Start Your Custom Project?</span>
+                    </h4>
+                    <p>
+                        <span class="ar-text">تواصل معنا عبر الدردشة أسفل الصفحة لمناقشة مشروعك. نحن هنا لتحويل أفكارك إلى واقع!</span>
+                        <span class="en-text hidden">Contact us via the chat at the bottom of the page to discuss your project. We're here to turn your ideas into reality!</span>
+                    </p>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC Rental Tab -->
+        <div id="pc-rental" class="tab-content">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="ar-text">💻 تأجير PC</span>
+                    <span class="en-text hidden">💻 PC Rental</span>
+                </h2>
+
+                <div class="info-box">
+                    <h4>
+                        <span class="ar-text">كيف يعمل تأجير PC؟</span>
+                        <span class="en-text hidden">How does PC Rental work?</span>
+                    </h4>
+                    <p>
+                        <span class="ar-text">تأجير PC عبر الإنترنت يتيح لك الوصول إلى حاسوب قوي عن بُعد من خلال الستريم المباشر. يمكنك تشغيل البرامج والألعاب الثقيلة حتى لو كان جهازك ضعيفاً.</span>
+                        <span class="en-text hidden">Online PC rental allows you to access a powerful computer remotely through live streaming. You can run heavy programs and games even if your device is weak.</span>
+                    </p>
+                </div>
+                
+                <div class="coming-soon">
+                    <h3>
+                        <span class="ar-text">قريباً جداً!</span>
+                        <span class="en-text hidden">Coming Soon!</span>
+                    </h3>
+                    <p>
+                        <span class="ar-text">خدمة تأجير PC قادمة قريباً. ابقوا على اطلاع!</span>
+                        <span class="en-text hidden">PC rental service coming soon. Stay tuned!</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Green Core Tab -->
+        <div id="about" class="tab-content">
+            <div class="container">
+                <div class="about-hero">
+                    <div class="about-content">
+                        <h1 class="creator-title">
+                            <span class="ar-text">🌟 Green Core - حلول برمجية احترافية</span>
+                            <span class="en-text hidden">🌟 Green Core - Professional Software Solutions</span>
+                        </h1>
+                        <p class="creator-intro">
+                            <span class="ar-text">
+                                نقدم حلولاً برمجية متطورة للأفراد والشركات. من التطبيقات المخصصة إلى أدوات الذكاء الاصطناعي، نحول التكنولوجيا المعقدة إلى حلول عملية.<br>
+                                مدعومون بخبرة +15 سنة في تطوير البرمجيات! 💻
+                            </span>
+                            <span class="en-text hidden">
+                                We provide advanced software solutions for individuals and businesses. From custom applications to AI tools, we turn complex technology into practical solutions.<br>
+                                Backed by 15+ years of software development experience! 💻
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="journey-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">
+                            <span class="ar-text">2007 🎮</span>
+                            <span class="en-text hidden">2007 🎮</span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="ar-text">
+                                <strong>بداية الرحلة التقنية</strong><br>
+                                بدأنا بتطوير أكواد GameShark وCodeBreaker، وضعنا الأسس لخبرتنا في تحليل البرمجيات والتطوير المتقدم.
+                            </span>
+                            <span class="en-text hidden">
+                                <strong>Technical Journey Begins</strong><br>
+                                Started with GameShark and CodeBreaker codes, laying the foundation for our expertise in software analysis and advanced development.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">
+                            <span class="ar-text">2010s 🚀</span>
+                            <span class="en-text hidden">2010s 🚀</span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="ar-text">
+                                <strong>توسيع المهارات</strong><br>
+                                انتقلنا إلى تطوير PC Trainers المتقدمة وتطبيقات Windows المخصصة، موسعين خبراتنا في البرمجة الاحترافية.
+                            </span>
+                            <span class="en-text hidden">
+                                <strong>Skills Expansion</strong><br>
+                                Moved to advanced PC Trainers and custom Windows applications, expanding our professional programming expertise.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">
+                            <span class="ar-text">2020s 🤖</span>
+                            <span class="en-text hidden">2020s 🤖</span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="ar-text">
+                                <strong>دمج الذكاء الاصطناعي</strong><br>
+                                بدأنا بدمج تقنيات AI المتقدمة (Whisper، Claude) في حلولنا، مقدمين أدوات ذكية ومبتكرة.
+                            </span>
+                            <span class="en-text hidden">
+                                <strong>AI Integration</strong><br>
+                                Started integrating advanced AI technologies (Whisper, Claude) into our solutions, offering smart and innovative tools.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">
+                            <span class="ar-text">2025 🌟</span>
+                            <span class="en-text hidden">2025 🌟</span>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="ar-text">
+                                <strong>إطلاق Green Core</strong><br>
+                                تأسيس Green Core كمنصة شاملة تجمع جميع خدماتنا التقنية تحت مظلة واحدة احترافية.
+                            </span>
+                            <span class="en-text hidden">
+                                <strong>Green Core Launch</strong><br>
+                                Establishing Green Core as a comprehensive platform bringing all our technical services under one professional umbrella.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-showcase">
+                    <h2 class="skills-title">
+                        <span class="ar-text">🛠️ خبراتنا التقنية</span>
+                        <span class="en-text hidden">🛠️ Our Technical Expertise</span>
+                    </h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-icon">💻</span>
+                            <div class="skill-name">
+                                <span class="ar-text">Windows Development</span>
+                                <span class="en-text hidden">Windows Development</span>
+                            </div>
+                            <div class="skill-desc">
+                                <span class="ar-text">تطوير تطبيقات Windows احترافية</span>
+                                <span class="en-text hidden">Professional Windows applications</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <span class="skill-icon">🤖</span>
+                            <div class="skill-name">
+                                <span class="ar-text">AI Integration</span>
+                                <span class="en-text hidden">AI Integration</span>
+                            </div>
+                            <div class="skill-desc">
+                                <span class="ar-text">دمج Whisper, Claude وتقنيات AI</span>
+                                <span class="en-text hidden">Whisper, Claude & AI technologies</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <span class="skill-icon">🎮</span>
+                            <div class="skill-name">
+                                <span class="ar-text">Game Engineering</span>
+                                <span class="en-text hidden">Game Engineering</span>
+                            </div>
+                            <div class="skill-desc">
+                                <span class="ar-text">تطوير Trainers وأدوات الألعاب</span>
+                                <span class="en-text hidden">Trainers & gaming tools development</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <span class="skill-icon">🔧</span>
+                            <div class="skill-name">
+                                <span class="ar-text">Software Analysis</span>
+                                <span class="en-text hidden">Software Analysis</span>
+                            </div>
+                            <div class="skill-desc">
+                                <span class="ar-text">تحليل وهندسة عكسية متقدمة</span>
+                                <span class="en-text hidden">Advanced analysis & reverse engineering</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <span class="skill-icon">📱</span>
+                            <div class="skill-name">
+                                <span class="ar-text">Custom Solutions</span>
+                                <span class="en-text hidden">Custom Solutions</span>
+                            </div>
+                            <div class="skill-desc">
+                                <span class="ar-text">حلول مخصصة للأعمال</span>
+                                <span class="en-text hidden">Tailored business solutions</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <span class="skill-icon">🎬</span>
+                            <div class="skill-name">
+                                <span class="ar-text">Media Processing</span>
+                                <span class="en-text hidden">Media Processing</span>
+                            </div>
+                            <div class="skill-desc">
+                                <span class="ar-text">معالجة وترجمة الفيديو</span>
+                                <span class="en-text hidden">Video processing & subtitling</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fun-quote">
+                    <span class="ar-text">
+                        "نحول التكنولوجيا المعقدة إلى حلول بسيطة وفعالة 🚀"<br>
+                        <small>- Green Core: حيث الخبرة تلتقي بالابتكار</small>
+                    </span>
+                    <span class="en-text hidden">
+                        "Turning complex technology into simple, effective solutions 🚀"<br>
+                        <small>- Green Core: Where expertise meets innovation</small>
+                    </span>
+                </div>
+
+                <div class="info-box">
+                    <h4>
+                        <span class="ar-text">🎯 فلسفتنا في العمل</span>
+                        <span class="en-text hidden">🎯 Our Work Philosophy</span>
+                    </h4>
+                    <p>
+                        <span class="ar-text">
+                            في Green Core، نؤمن بالشفافية الكاملة والجودة العالية. نقدم نسخ تجريبية مجانية، ونكون صادقين حول الإمكانيات والقيود. 
+                            هدفنا ليس فقط تطوير البرمجيات، بل بناء شراكات طويلة الأمد مبنية على الثقة والاحترافية. 🌱<br><br>
+                            <strong>التزامنا:</strong><br>
+                            ✅ شفافية كاملة في التعامل<br>
+                            ✅ جودة لا تقبل التنازل<br>
+                            ✅ دعم فني مستمر<br>
+                            ✅ تسليم في الوقت المحدد<br>
+                            ✅ أسعار عادلة وتنافسية
+                        </span>
+                        <span class="en-text hidden">
+                            At Green Core, we believe in complete transparency and high quality. We offer free trials and are honest about capabilities and limitations. 
+                            Our goal isn't just software development, but building long-term partnerships based on trust and professionalism. 🌱<br><br>
+                            <strong>Our Commitment:</strong><br>
+                            ✅ Complete transparency in dealings<br>
+                            ✅ Uncompromising quality<br>
+                            ✅ Continuous technical support<br>
+                            ✅ On-time delivery<br>
+                            ✅ Fair and competitive pricing
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>
+                <span class="ar-text">© 2025 Green Core. جميع الحقوق محفوظة.</span>
+                <span class="en-text hidden">© 2025 Green Core. All rights reserved.</span>
+            </p>
+            <p style="margin-top: 20px; opacity: 0.7;" id="last-updated">
+                <span class="ar-text">الإصدار 1.0 | آخر تحديث: نوفمبر 2025</span>
+                <span class="en-text hidden">Version 1.0 | Last Updated: November 2025</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let isArabic = true;
+
+        // Create audio context for button sounds
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        // Cassette recorder mechanical click sound recreation
+        function playCassetteClickSound() {
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+            
+            // Create multiple oscillators to simulate the mechanical cassette click
+            const oscillators = [];
+            const gainNodes = [];
+            
+            // Initial "click" - high frequency transient
+            const click1 = audioContext.createOscillator();
+            const gain1 = audioContext.createGain();
+            click1.connect(gain1);
+            gain1.connect(audioContext.destination);
+            click1.frequency.setValueAtTime(2500, audioContext.currentTime);
+            click1.frequency.exponentialRampToValueAtTime(1500, audioContext.currentTime + 0.01);
+            gain1.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gain1.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.01);
+            click1.start(audioContext.currentTime);
+            click1.stop(audioContext.currentTime + 0.01);
+            
+            // Mechanical "thunk" - mid frequency
+            const thunk = audioContext.createOscillator();
+            const gainThunk = audioContext.createGain();
+            thunk.connect(gainThunk);
+            gainThunk.connect(audioContext.destination);
+            thunk.frequency.setValueAtTime(400, audioContext.currentTime + 0.005);
+            thunk.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.03);
+            gainThunk.gain.setValueAtTime(0.2, audioContext.currentTime + 0.005);
+            gainThunk.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.03);
+            thunk.start(audioContext.currentTime + 0.005);
+            thunk.stop(audioContext.currentTime + 0.03);
+            
+            // Spring tension release - low frequency rumble
+            const spring = audioContext.createOscillator();
+            const gainSpring = audioContext.createGain();
+            spring.connect(gainSpring);
+            gainSpring.connect(audioContext.destination);
+            spring.frequency.setValueAtTime(80, audioContext.currentTime + 0.01);
+            spring.frequency.exponentialRampToValueAtTime(60, audioContext.currentTime + 0.08);
+            gainSpring.gain.setValueAtTime(0.15, audioContext.currentTime + 0.01);
+            gainSpring.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.08);
+            spring.start(audioContext.currentTime + 0.01);
+            spring.stop(audioContext.currentTime + 0.08);
+            
+            // Final mechanical settle - brief high frequency
+            const settle = audioContext.createOscillator();
+            const gainSettle = audioContext.createGain();
+            settle.connect(gainSettle);
+            gainSettle.connect(audioContext.destination);
+            settle.frequency.setValueAtTime(1800, audioContext.currentTime + 0.06);
+            settle.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.075);
+            gainSettle.gain.setValueAtTime(0.1, audioContext.currentTime + 0.06);
+            gainSettle.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.075);
+            settle.start(audioContext.currentTime + 0.06);
+            settle.stop(audioContext.currentTime + 0.075);
+        }
+
+        function playHoverSound() {
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+            
+            // Softer hover sound - like tape head engaging
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.05);
+            
+            gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.05);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.05);
+        }
+
+        function toggleLanguage() {
+            playCassetteClickSound();
+            isArabic = !isArabic;
+            const html = document.documentElement;
+            const arElements = document.querySelectorAll('.ar-text');
+            const enElements = document.querySelectorAll('.en-text');
+
+            if (isArabic) {
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                arElements.forEach(el => el.classList.remove('hidden'));
+                enElements.forEach(el => el.classList.add('hidden'));
+            } else {
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                arElements.forEach(el => el.classList.add('hidden'));
+                enElements.forEach(el => el.classList.remove('hidden'));
+            }
+        }
+
+        function showTab(tabId) {
+            playCassetteClickSound();
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all nav tabs
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show selected tab and mark nav tab as active
+            document.getElementById(tabId).classList.add('active');
+            
+            // Find and activate the clicked nav tab
+            const clickedTab = Array.from(navTabs).find(tab => {
+                const tabOnClick = tab.getAttribute('onclick');
+                return tabOnClick && tabOnClick.includes(tabId);
+            });
+            if (clickedTab) {
+                clickedTab.classList.add('active');
+            }
+        }
+
+        // Add sound effects to all clickable elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enable audio context on first user interaction
+            document.addEventListener('click', function enableAudio() {
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                document.removeEventListener('click', enableAudio);
+            }, { once: true });
+
+            const lastUpdatedElement = document.getElementById('last-updated');
+            if (lastUpdatedElement) {
+                lastUpdatedElement.innerHTML = `
+                    <span class="ar-text">الإصدار 1.0 | آخر تحديث: يوليو 2025</span>
+                    <span class="en-text hidden">Version 1.0 | Last Updated: July 2025</span>
+                `;
+            }
+
+            // Add interactive effects to cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    playHoverSound();
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add sound effects to buttons and links
+            const buttons = document.querySelectorAll('button, .download-link, .main-download');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    playHoverSound();
+                });
+                button.addEventListener('click', function(e) {
+                    playCassetteClickSound();
+                    // Ensure the link works properly
+                    if (this.href) {
+                        // Let the default behavior happen
+                        return true;
+                    }
+                });
+            });
+
+            // Add nav tab hover effects
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => {
+                tab.addEventListener('mouseenter', function() {
+                    playHoverSound();
+                });
+            });
+
+            // Add interactive effects to timeline items and skill items
+            const timelineItems = document.querySelectorAll('.timeline-item, .skill-item');
+            timelineItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    playHoverSound();
+                });
+            });
+
+            // Add glow effect to important elements
+            const importantElements = document.querySelectorAll('.main-download, .pricing-box, .coming-soon, .about-hero');
+            importantElements.forEach(element => {
+                element.classList.add('glow');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Add some extra visual effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add pulse effect to floating lights
+            const lights = document.querySelectorAll('.light');
+            lights.forEach((light, index) => {
+                setTimeout(() => {
+                    light.style.animation += `, pulse 3s infinite ${index * 0.5}s`;
+                }, index * 1000);
+            });
+        });
+
+        // Add pulse keyframe animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { opacity: 0.8; transform: scale(1); }
+                50% { opacity: 1; transform: scale(1.2); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/687bb7587f202b19181ef5a0/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>
