@@ -833,11 +833,7 @@
 
     <!-- Navigation Tabs -->
     <nav class="nav-tabs">
-        <button class="nav-tab active" onclick="showTab('services')">
-            <span class="ar-text">🚀 خدماتنا</span>
-            <span class="en-text hidden">🚀 Our Services</span>
-        </button>
-        <button class="nav-tab" onclick="showTab('apps')">
+        <button class="nav-tab active" onclick="showTab('apps')">
             <span class="ar-text">📱 التطبيقات</span>
             <span class="en-text hidden">📱 Applications</span>
         </button>
@@ -850,144 +846,12 @@
             <span class="en-text hidden">💻 PC Services</span>
         </button>
         <button class="nav-tab" onclick="showTab('about')">
-            <span class="ar-text">🌟 عن الشركة</span>
-            <span class="en-text hidden">🌟 About Us</span>
+            <span class="ar-text">🌟 عني</span>
+            <span class="en-text hidden">🌟 About Me</span>
         </button>
     </nav>
 
     <main>
-        <!-- Services Overview Tab -->
-        <div id="services" class="tab-content active">
-            <div class="container">
-                <h2 class="section-title">
-                    <span class="ar-text">🚀 خدماتنا الاحترافية</span>
-                    <span class="en-text hidden">🚀 Our Professional Services</span>
-                </h2>
-                <p class="section-description">
-                    <span class="ar-text">نقدم مجموعة شاملة من الحلول البرمجية المتطورة لتلبية احتياجاتك التقنية</span>
-                    <span class="en-text hidden">We offer a comprehensive range of advanced software solutions to meet your technical needs</span>
-                </p>
-                
-                <div class="cards-grid">
-                    <div class="card">
-                        <span class="card-icon">💻</span>
-                        <h3 class="card-title">
-                            <span class="ar-text">تطوير التطبيقات المخصصة</span>
-                            <span class="en-text hidden">Custom Application Development</span>
-                        </h3>
-                        <p class="card-description">
-                            <span class="ar-text">نطور تطبيقات Windows مخصصة تماماً لاحتياجاتك. من أدوات الأعمال إلى البرامج المتخصصة، نحول أفكارك إلى واقع.</span>
-                            <span class="en-text hidden">We develop custom Windows applications tailored to your needs. From business tools to specialized software, we turn your ideas into reality.</span>
-                        </p>
-                    </div>
-
-                    <div class="card">
-                        <span class="card-icon">🤖</span>
-                        <h3 class="card-title">
-                            <span class="ar-text">حلول الذكاء الاصطناعي</span>
-                            <span class="en-text hidden">AI-Powered Solutions</span>
-                        </h3>
-                        <p class="card-description">
-                            <span class="ar-text">دمج تقنيات الذكاء الاصطناعي المتقدمة في تطبيقاتك. نستخدم Whisper وClaude وتقنيات AI الحديثة لتعزيز قدرات برامجك.</span>
-                            <span class="en-text hidden">Integrate advanced AI technologies into your applications. We use Whisper, Claude, and modern AI technologies to enhance your software capabilities.</span>
-                        </p>
-                    </div>
-
-                    <div class="card">
-                        <span class="card-icon">�</span>
-                        <h3 class="card-title">
-                            <span class="ar-text">Blue Moon Launcher</span>
-                            <span class="en-text hidden">Blue Moon Launcher</span>
-                        </h3>
-                        <p class="card-description">
-                            <span class="ar-text">منصة إطلاق ألعاب سينمائية بتحكم كامل عبر الـController. تجربة Big Picture مثالية مع إدارة ذكية للحفظ وملفات متعددة.</span>
-                            <span class="en-text hidden">Cinematic game launcher with full controller support. Perfect Big Picture experience with intelligent save management and multiple profiles.</span>
-                        </p>
-                        <a href="#apps" onclick="showTab('apps'); return false;" style="display: inline-block; margin-top: 10px; color: var(--primary-color); text-decoration: underline;">
-                            <span class="ar-text">تحميل الآن →</span>
-                            <span class="en-text hidden">Download Now →</span>
-                        </a>
-                    </div>
-
-                    <div class="card">
-                        <span class="card-icon">�🎬</span>
-                        <h3 class="card-title">
-                            <span class="ar-text">Milo Studio - أداة الترجمة الذكية</span>
-                            <span class="en-text hidden">Milo Studio - Smart Subtitle Tool</span>
-                        </h3>
-                        <p class="card-description">
-                            <span class="ar-text">أداة متقدمة لترجمة الفيديوهات وإضافة الترجمات تلقائياً باستخدام AI. مثالية للأنمي والمسلسلات والمحتوى المرئي.</span>
-                            <span class="en-text hidden">Advanced tool for automatic video translation and subtitling using AI. Perfect for anime, series, and visual content.</span>
-                        </p>
-                        <a href="#apps" onclick="showTab('apps'); return false;" style="display: inline-block; margin-top: 10px; color: var(--primary-color); text-decoration: underline;">
-                            <span class="ar-text">تحميل الآن →</span>
-                            <span class="en-text hidden">Download Now →</span>
-                        </a>
-                    </div>
-
-                    <div class="card">
-                        <span class="card-icon">🎮</span>
-                        <h3 class="card-title">
-                            <span class="ar-text">Game Trainers & Modding</span>
-                            <span class="en-text hidden">Game Trainers & Modding</span>
-                        </h3>
-                        <p class="card-description">
-                            <span class="ar-text">تطوير trainers مخصصة للألعاب مع خبرة +15 سنة. نوفر أدوات تعديل احترافية لتحسين تجربة اللعب.</span>
-                            <span class="en-text hidden">Custom game trainer development with 15+ years experience. We provide professional modding tools to enhance gaming experience.</span>
-                        </p>
-                    </div>
-
-                    <div class="card">
-                        <span class="card-icon">🛠️</span>
-                        <h3 class="card-title">
-                            <span class="ar-text">استشارات تقنية</span>
-                            <span class="en-text hidden">Technical Consulting</span>
-                        </h3>
-                        <p class="card-description">
-                            <span class="ar-text">نساعدك في اختيار أفضل الحلول التقنية لمشروعك. استشارات متخصصة في البرمجة والتطوير والأنظمة.</span>
-                            <span class="en-text hidden">We help you choose the best technical solutions for your project. Specialized consulting in programming, development, and systems.</span>
-                        </p>
-                    </div>
-
-                    <div class="card">
-                        <span class="card-icon">⚡</span>
-                        <h3 class="card-title">
-                            <span class="ar-text">خدمات قادمة</span>
-                            <span class="en-text hidden">Coming Soon</span>
-                        </h3>
-                        <p class="card-description">
-                            <span class="ar-text">نعمل باستمرار على توسيع خدماتنا. قريباً: تأجير PC السحابي، خدمات DevOps، والمزيد من الحلول المبتكرة.</span>
-                            <span class="en-text hidden">We're constantly expanding our services. Soon: Cloud PC rental, DevOps services, and more innovative solutions.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="info-box" style="margin-top: 40px; text-align: center;">
-                    <h4>
-                        <span class="ar-text">🎯 لماذا تختار Green Core؟</span>
-                        <span class="en-text hidden">🎯 Why Choose Green Core?</span>
-                    </h4>
-                    <p>
-                        <span class="ar-text">
-                            ✅ خبرة +15 سنة في تطوير البرمجيات<br>
-                            ✅ نسخ تجريبية مجانية لجميع التطبيقات المخصصة<br>
-                            ✅ دعم فني احترافي<br>
-                            ✅ أسعار تنافسية وشفافية كاملة<br>
-                            ✅ جودة عالية وتسليم في الوقت المحدد
-                        </span>
-                        <span class="en-text hidden">
-                            ✅ 15+ years of software development experience<br>
-                            ✅ Free trials for all custom applications<br>
-                            ✅ Professional technical support<br>
-                            ✅ Competitive pricing and full transparency<br>
-                            ✅ High quality and on-time delivery
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trainers Tab -->
         <div id="trainers" class="tab-content">
             <div class="container">
                 <h2 class="section-title">
@@ -1385,23 +1249,23 @@
             </div>
         </div>
 
-        <!-- About Green Core Tab -->
+        <!-- About Me Tab -->
         <div id="about" class="tab-content">
             <div class="container">
                 <div class="about-hero">
                     <div class="about-content">
                         <h1 class="creator-title">
-                            <span class="ar-text">🌟 Green Core - حلول برمجية احترافية</span>
-                            <span class="en-text hidden">🌟 Green Core - Professional Software Solutions</span>
+                            <span class="ar-text">🌟 عني - مطور Green Core</span>
+                            <span class="en-text hidden">🌟 About Me - Green Core Developer</span>
                         </h1>
                         <p class="creator-intro">
                             <span class="ar-text">
-                                نقدم حلولاً برمجية متطورة للأفراد والشركات. من التطبيقات المخصصة إلى أدوات الذكاء الاصطناعي، نحول التكنولوجيا المعقدة إلى حلول عملية.<br>
-                                مدعومون بخبرة +15 سنة في تطوير البرمجيات! 💻
+                                أقدم حلولاً برمجية متطورة للأفراد والشركات. من التطبيقات المخصصة إلى أدوات الذكاء الاصطناعي، أحول التكنولوجيا المعقدة إلى حلول عملية.<br>
+                                بخبرة +15 سنة في تطوير البرمجيات! 💻
                             </span>
                             <span class="en-text hidden">
-                                We provide advanced software solutions for individuals and businesses. From custom applications to AI tools, we turn complex technology into practical solutions.<br>
-                                Backed by 15+ years of software development experience! 💻
+                                I provide advanced software solutions for individuals and businesses. From custom applications to AI tools, I turn complex technology into practical solutions.<br>
+                                With 15+ years of software development experience! 💻
                             </span>
                         </p>
                     </div>
@@ -1416,11 +1280,11 @@
                         <div class="timeline-content">
                             <span class="ar-text">
                                 <strong>بداية الرحلة التقنية</strong><br>
-                                بدأنا بتطوير أكواد GameShark وCodeBreaker، وضعنا الأسس لخبرتنا في تحليل البرمجيات والتطوير المتقدم.
+                                بدأت بتطوير أكواد GameShark وCodeBreaker، وضعت الأسس لخبرتي في تحليل البرمجيات والتطوير المتقدم.
                             </span>
                             <span class="en-text hidden">
                                 <strong>Technical Journey Begins</strong><br>
-                                Started with GameShark and CodeBreaker codes, laying the foundation for our expertise in software analysis and advanced development.
+                                I started with GameShark and CodeBreaker codes, laying the foundation for my expertise in software analysis and advanced development.
                             </span>
                         </div>
                     </div>
@@ -1433,7 +1297,7 @@
                         <div class="timeline-content">
                             <span class="ar-text">
                                 <strong>توسيع المهارات</strong><br>
-                                انتقلنا إلى تطوير PC Trainers المتقدمة وتطبيقات Windows المخصصة، موسعين خبراتنا في البرمجة الاحترافية.
+                                انتقلت إلى تطوير PC Trainers المتقدمة وتطبيقات Windows المخصصة، موسعاً خبراتي في البرمجة الاحترافية.
                             </span>
                             <span class="en-text hidden">
                                 <strong>Skills Expansion</strong><br>
@@ -1450,11 +1314,11 @@
                         <div class="timeline-content">
                             <span class="ar-text">
                                 <strong>دمج الذكاء الاصطناعي</strong><br>
-                                بدأنا بدمج تقنيات AI المتقدمة (Whisper، Claude) في حلولنا، مقدمين أدوات ذكية ومبتكرة.
+                                بدأت بدمج تقنيات AI المتقدمة (Whisper، Claude) في حلولي، مقدماً أدوات ذكية ومبتكرة.
                             </span>
                             <span class="en-text hidden">
                                 <strong>AI Integration</strong><br>
-                                Started integrating advanced AI technologies (Whisper, Claude) into our solutions, offering smart and innovative tools.
+                                I started integrating advanced AI technologies (Whisper, Claude) into my solutions, offering smart and innovative tools.
                             </span>
                         </div>
                     </div>
@@ -1467,11 +1331,11 @@
                         <div class="timeline-content">
                             <span class="ar-text">
                                 <strong>إطلاق Green Core</strong><br>
-                                تأسيس Green Core كمنصة شاملة تجمع جميع خدماتنا التقنية تحت مظلة واحدة احترافية.
+                                أسست Green Core كمنصة شاملة تجمع جميع خدماتي التقنية تحت مظلة واحدة احترافية.
                             </span>
                             <span class="en-text hidden">
                                 <strong>Green Core Launch</strong><br>
-                                Establishing Green Core as a comprehensive platform bringing all our technical services under one professional umbrella.
+                                I established Green Core as a comprehensive platform bringing all my technical services under one professional umbrella.
                             </span>
                         </div>
                     </div>
@@ -1479,8 +1343,8 @@
 
                 <div class="skills-showcase">
                     <h2 class="skills-title">
-                        <span class="ar-text">🛠️ خبراتنا التقنية</span>
-                        <span class="en-text hidden">🛠️ Our Technical Expertise</span>
+                        <span class="ar-text">🛠️ خبراتي التقنية</span>
+                        <span class="en-text hidden">🛠️ My Technical Expertise</span>
                     </h2>
                     <div class="skills-grid">
                         <div class="skill-item">
@@ -1559,25 +1423,25 @@
 
                 <div class="fun-quote">
                     <span class="ar-text">
-                        "نحول التكنولوجيا المعقدة إلى حلول بسيطة وفعالة 🚀"<br>
+                        "أحول التكنولوجيا المعقدة إلى حلول بسيطة وفعالة 🚀"<br>
                         <small>- Green Core: حيث الخبرة تلتقي بالابتكار</small>
                     </span>
                     <span class="en-text hidden">
-                        "Turning complex technology into simple, effective solutions 🚀"<br>
+                        "I turn complex technology into simple, effective solutions 🚀"<br>
                         <small>- Green Core: Where expertise meets innovation</small>
                     </span>
                 </div>
 
                 <div class="info-box">
                     <h4>
-                        <span class="ar-text">🎯 فلسفتنا في العمل</span>
-                        <span class="en-text hidden">🎯 Our Work Philosophy</span>
+                        <span class="ar-text">🎯 فلسفتي في العمل</span>
+                        <span class="en-text hidden">🎯 My Work Philosophy</span>
                     </h4>
                     <p>
                         <span class="ar-text">
-                            في Green Core، نؤمن بالشفافية الكاملة والجودة العالية. نقدم نسخ تجريبية مجانية، ونكون صادقين حول الإمكانيات والقيود. 
-                            هدفنا ليس فقط تطوير البرمجيات، بل بناء شراكات طويلة الأمد مبنية على الثقة والاحترافية. 🌱<br><br>
-                            <strong>التزامنا:</strong><br>
+                            في Green Core، أؤمن بالشفافية الكاملة والجودة العالية. أقدم نسخ تجريبية مجانية، وأكون صادقاً حول الإمكانيات والقيود. 
+                            هدفي ليس فقط تطوير البرمجيات، بل بناء شراكات طويلة الأمد مبنية على الثقة والاحترافية. 🌱<br><br>
+                            <strong>التزامي:</strong><br>
                             ✅ شفافية كاملة في التعامل<br>
                             ✅ جودة لا تقبل التنازل<br>
                             ✅ دعم فني مستمر<br>
@@ -1585,9 +1449,9 @@
                             ✅ أسعار عادلة وتنافسية
                         </span>
                         <span class="en-text hidden">
-                            At Green Core, we believe in complete transparency and high quality. We offer free trials and are honest about capabilities and limitations. 
-                            Our goal isn't just software development, but building long-term partnerships based on trust and professionalism. 🌱<br><br>
-                            <strong>Our Commitment:</strong><br>
+                            At Green Core, I believe in complete transparency and high quality. I offer free trials and am honest about capabilities and limitations. 
+                            My goal isn't just software development, but building long-term partnerships based on trust and professionalism. 🌱<br><br>
+                            <strong>My Commitment:</strong><br>
                             ✅ Complete transparency in dealings<br>
                             ✅ Uncompromising quality<br>
                             ✅ Continuous technical support<br>
